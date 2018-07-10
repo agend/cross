@@ -94,6 +94,7 @@ pub enum Target {
 
     // Linux
     Aarch64UnknownLinuxGnu,
+    Aarch64UnknownLinuxMusl,
     ArmUnknownLinuxGnueabi,
     ArmUnknownLinuxMusleabi,
     Armv7UnknownLinuxGnueabihf,
@@ -196,6 +197,7 @@ impl Target {
     fn is_linux(&self) -> bool {
         match *self {
             Target::Aarch64UnknownLinuxGnu |
+            Target::Aarch64UnknownLinuxMusl |
             Target::ArmUnknownLinuxGnueabi |
             Target::ArmUnknownLinuxMusleabi |
             Target::Armv7UnknownLinuxGnueabihf |
@@ -258,6 +260,7 @@ impl Target {
 
             Aarch64LinuxAndroid => "aarch64-linux-android",
             Aarch64UnknownLinuxGnu => "aarch64-unknown-linux-gnu",
+            Aarch64UnknownLinuxMusl => "aarch64-unknown-linux-musl",
             ArmLinuxAndroideabi => "arm-linux-androideabi",
             ArmUnknownLinuxGnueabi => "arm-unknown-linux-gnueabi",
             ArmUnknownLinuxMusleabi => "arm-unknown-linux-musleabi",
@@ -311,6 +314,7 @@ impl Target {
         match triple {
             "aarch64-linux-android" => Aarch64LinuxAndroid,
             "aarch64-unknown-linux-gnu" => Aarch64UnknownLinuxGnu,
+            "aarch64-unknown-linux-musl" => Aarch64UnknownLinuxMusl,
             "arm-linux-androideabi" => ArmLinuxAndroideabi,
             "arm-unknown-linux-gnueabi" => ArmUnknownLinuxGnueabi,
             "arm-unknown-linux-musleabi" => ArmUnknownLinuxMusleabi,
